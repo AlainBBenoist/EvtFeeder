@@ -18,7 +18,7 @@ class evt_feeder() :
     """
     This class will iterate through a list of URLs containing events as retrieved by specialized web collectors
     """
-    def __init__(self, collectors, evt_categories, evt_regions, filter_function) :
+    def __init__(self, collectors, evt_categories, evt_regions, filter_function=None) :
         # Initializing the list of collectors
         self.collectors = collectors
 
@@ -111,7 +111,7 @@ if __name__ == '__main__' :
 
     # Retrieve selected events
     n_events = 0
-    for evt_info in evt_feeder(collectors, evt_categories, evt_regions, None):
+    for evt_info in evt_feeder(collectors, evt_categories, evt_regions):
         try :
             print('{:s} {:s}-{:s} [{:32.32s}]'.format(evt_info['name'], evt_info['start_date'], evt_info['end_date'], evt_info['source_url']))
             n_events += 1
